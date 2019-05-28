@@ -520,7 +520,7 @@ public class Node : MonoBehaviour
 
     public bool UpdateGateToClose(int id)
     {
-        gateOpen = true;
+        gateOpen = !gateOpen;
 
         foreach (var node in m_board.AllNodes)
         {
@@ -632,25 +632,25 @@ public class Node : MonoBehaviour
         int result = 0;
         bool ris = false;
 
-        foreach (Node triggerNode in m_board.TriggerNodes) //aggiungere controllo sull'ID
+        foreach (Node triggerNode in m_board.TriggerNodes)
         {
-            if (SceneManager.GetActiveScene().buildIndex != 3)
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
-                if (triggerNode.triggerState && this.m_nodePosition != triggerNode.m_nodePosition)
-                if (triggerNode.triggerState && this.m_nodePosition != triggerNode.m_nodePosition)
+                foreach (EnemyManager enemy in m_board.m_gm.m_enemies)
                 {
-                    result++;
+                    if (enemy != null)
+                    {
+                        if (m_board.FindNodeAt(enemy.transform.position).isATrigger)
+                        {
+                            result++;
+                        }
+                    }
+                    
                 }
             }
-            else
-            {
-                if (triggerNode.triggerState)
-                {
-                    result++;
-                }
-            }
-
+            
         }
+
         if (result > 0)
             ris = true;
 

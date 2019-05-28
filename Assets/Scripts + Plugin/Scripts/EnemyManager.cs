@@ -84,7 +84,7 @@ public class EnemyManager : TurnManager {
     public void Die() {
 
         if (m_board.FindNodeAt(transform.position).isATrigger) {
-            m_board.FindNodeAt(transform.position).UpdateTriggerToTrue(); //RISCHIO
+            m_board.FindNodeAt(transform.position).UpdateTriggerToTrue();
             m_board.FindNodeAt(transform.position).triggerState = false;
         }
 

@@ -266,6 +266,21 @@ public class BoardManager : MonoBehaviour
         Debug.Log("CLOSE");
     }
 
+    public void UpdateTriggerToFalseLevel3(Node n)
+    {
+
+        n.triggerTemp.transform.GetChild(1).transform.gameObject.SetActive(false);
+        n.triggerState = false;
+
+        if (n.TriggerOrLogic() == true)
+        {
+            n.UpdateGateToClose(PreviousPlayerNode.GetGateID());
+            n.ArmorDeactivation(PreviousPlayerNode.GetArmorID());
+            n.TrapDeactivation(PreviousPlayerNode.GetTrapID());
+        }
+        Debug.Log("CLOSE");
+    }
+
 
     public List<MovableObject> FindMovableObjects()
     {

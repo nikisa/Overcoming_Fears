@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     
 
     Turn m_currentTurn = Turn.Player;
-    public Turn CurrentTurn { get { return m_currentTurn; } }
+    public Turn CurrentTurn { get { return m_currentTurn; }  set { m_currentTurn = value; } }
 
     bool m_hasLevelStarted = false;
     public bool HasLevelStarted { get { return m_hasLevelStarted; } set { m_hasLevelStarted = value; } }
@@ -464,12 +464,10 @@ public class GameManager : MonoBehaviour
 
         // CheckSword();
         checkNodeForObstacles();
-        LightBulbNode();
+        //LightBulbNode();
         //FearEnemies();
         FlashLightNode();
-
-
-
+        
 
         foreach (var enemy in m_enemies)
         {
@@ -774,17 +772,17 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void LightBulbNode()
-    {
-        if (m_board.playerNode.hasLightBulb)
-        {
-            m_board.playerNode.hasLightBulb = false;
-            m_board.playerNode.transform.GetChild(2).gameObject.SetActive(false);
-            m_player.transform.GetChild(2).gameObject.SetActive(true);
-            m_player.hasLightBulb = true;
-            //m_player.spottedPlayer = false;
-        }
-    }
+    //public void LightBulbNode()
+    //{
+    //    if (m_board.playerNode.hasLightBulb)
+    //    {
+    //        m_board.playerNode.hasLightBulb = false;
+    //        m_board.playerNode.transform.GetChild(2).gameObject.SetActive(false);
+    //        m_player.transform.GetChild(2).gameObject.SetActive(true);
+    //        m_player.hasLightBulb = true;
+    //        //m_player.spottedPlayer = false;
+    //    }
+    //}
 
     public void FlashLightNode()
     {
@@ -851,6 +849,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
     public void SaveMO()
     {
         foreach (var crackcableNode in m_board.FindCrackableNodes())
@@ -862,6 +861,7 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
     public void NotMovingMovable()
     {
         foreach (var movableObject in m_movableObjects)

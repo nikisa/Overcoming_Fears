@@ -104,31 +104,36 @@ public class PlayerManager : TurnManager
                     if (switchState)
                     {
                         m_board.playerNode.UpdateSwitchToFalse();
+                        m_gm.CurrentTurn = Turn.Enemy;
+                        m_gm.CurrentTurn = Turn.Player;
 
-                        if (SceneManager.GetActiveScene().buildIndex == 3)
-                        {
-                            foreach (EnemyManager enemy in m_gm.m_enemies)
-                            {
-                                if (enemy.isOff )
-                                {
-                                    enemy.isOff = false;
-                                }
-                                
-                                if (enemy.m_enemySensor.FoundPlayer && enemy.isOff == false && m_board.FindNodeAt(enemy.transform.position).gateOpen == true)
-                                {
-                                    //attack player
-                                    //notify the GM to lose the level
-                                    Debug.Log(this.name + "MORTE");
-                                    m_gameManager.LoseLevel();
-                                }
-                            }
-                        }
-                        
+
+
+                        //if (SceneManager.GetActiveScene().buildIndex == 3)
+                        //{
+                        //    foreach (EnemyManager enemy in m_gm.m_enemies)
+                        //    {
+                        //        if (enemy.isOff )
+                        //        {
+                        //            enemy.isOff = false;
+                        //        }
+
+                        //        if (enemy.m_enemySensor.FoundPlayer && enemy.isOff == false && m_board.FindNodeAt(enemy.transform.position).gateOpen == true)
+                        //        {
+                        //            //attack player
+                        //            //notify the GM to lose the level
+                        //            Debug.Log(this.name + "MORTE");
+                        //            m_gameManager.LoseLevel();
+                        //        }
+                        //    }
+                        //}
+
                     }
                     else
                     {
                         m_board.playerNode.UpdateSwitchToTrue();
-                        
+                        m_gm.CurrentTurn = Turn.Enemy;
+                        m_gm.CurrentTurn = Turn.Player;
                     }
                 }
 

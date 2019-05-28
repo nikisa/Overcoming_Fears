@@ -56,7 +56,6 @@ public class Mover : MonoBehaviour {
                 {
                     if ((targetNode.isAGate && targetNode.GetGateState() == true) || !targetNode.isAGate)
                     {
-                        Debug.Log(this.name + " Move test");
                         StartCoroutine(MoveRoutine(destinationPos, delayTime));
                     }
 

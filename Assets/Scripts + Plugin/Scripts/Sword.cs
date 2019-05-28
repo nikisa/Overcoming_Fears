@@ -46,7 +46,12 @@ public class Sword : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Enemy") {
+            if (m_board.FindNodeAt(other.transform.position).isATrigger)
+            {
+                m_board.UpdateTriggerToFalseLevel3(m_board.FindNodeAt(other.transform.position));
+            }
             other.GetComponent<EnemyManager>().Die();
+            
         }
     }
 
